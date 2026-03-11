@@ -1,13 +1,13 @@
 <div align="center">
   <img src="https://assets.leetcode.com/users/images/307dc537-f823-4556-becd-fa9a27b8bfbc_1679047971.0543265.png" alt="AI Brain Logo" width="100"/>
-  <h1>🧠 Mind Reader AI Game</h1>
+  <h1>🧠 Mind Reader AI</h1>
   <p><strong>A Next-Generation Machine Learning Game that actually reads your mind.</strong></p>
   <p>
-    <a href="#features">Features</a> •
-    <a href="#tech-stack">Tech Stack</a> •
-    <a href="#installation--running-locally">Installation</a> •
-    <a href="#how-it-works">How It Works</a> •
-    <a href="#models--accuracy">Machine Learning Models</a>
+    <a href="#-features">Features</a> •
+    <a href="#-system-architecture">Architecture</a> •
+    <a href="#-installation--running-locally">Installation</a> •
+    <a href="#-how-it-works">How It Works</a> •
+    <a href="#-models--accuracy">Machine Learning Models</a>
   </p>
 </div>
 
@@ -15,66 +15,138 @@
 
 ## 🎮 The Experience
 
-Mind Reader is a full-stack, AI-powered web game where you compete against a custom-trained **Decision Tree / Naive Bayes** ensemble. 
+Mind Reader is a full-stack, AI-powered web game where you compete against a custom-trained **ID3 Decision Tree**. 
 
 The game features two distinct modes:
 
-1. **AI Guesses Mode:** You think of a secret object (like an animal, food, or vehicle). The AI will dynamically analyze the current candidate pool and heuristically choose the **best possible YES/NO questions** to ask you in order to narrow down its possibilities the fastest. Watch the AI's internal certainty scale up in real-time until it correctly guesses your thought!
-2. **User Guesses Mode:** The tables turn! The AI secretly picks an object, and *you* must type natural language questions. The AI parses your semantics to answer you truthfully. Can you figure it out before you run out of questions?
+| Mode | Emoji | Description | Visual UI |
+|----------|-------|---------------|----------|
+| **AI Guesses** | 🤖 | You think of an object. The AI asks YES/NO questions. | 🟩 **Dynamic Confidence Meter & Live Candidate Filtering** |
+| **You Guess** | 🎯 | The AI picks an object. You type YES/NO questions. | 🟦 **Holographic Chat Terminal & Hint Generation** |
 
 ---
 
 ## ✨ Features
 
 - ⚡ **Dynamic Entropy Questions:** The AI dynamically recalculates information gain after every answer you provide to ask mathematically optimal questions.
-- 🎯 **Visual Confidence Meter:** Watch the AI's certainty percentage increase as you answer, fully exposing the backend's Naive Bayes probabilities to the UI.
-- 👀 **Live Candidate Elimination:** As you answer questions, you can actually look at the scrollable grid of potential identities. When you answer a question, you watch the incorrect items disappear instantly as the AI narrows you down.
-- 🎨 **Glassmorphic UI:** Modern, highly stylized Svelte 4 frontend featuring gradients, glassmorphism, responsive candidate chips, and micro-animations.
+- 🎯 **Visual Confidence Meter:** Watch the AI's certainty percentage increase as you answer, fully exposing backend probabilities.
+- 👀 **Live Candidate Elimination:** As you answer questions, incorrect items disappear instantly natively through Svelte components.
+- 🎨 **Glassmorphic Cyber UI:** Premium Svelte 4 frontend featuring layered mesh gradients, glass panels, reactive candidate chips, and slick routing micro-animations.
 
 ---
 
-## 🛠 Tech Stack
+## 🏗 System Architecture
 
-**Frontend:**
-* [Svelte](https://svelte.dev/) (Component-based reactive UI)
-* Vite (Rapid hot-reloading bundler)
-* CSS 3 (Dynamic Keyframes, Gradients, Viewport sizing)
+```mermaid
+graph TB
+    subgraph Frontend Interface
+        A[🤖 AI Guesses UI] --> D
+        B[🎯 You Guess UI] --> D
+        C[📊 Live Stats] --> D
+    end
 
-**Backend:**
-* [Python 3](https://www.python.org/) & [Flask](https://flask.palletsprojects.com/) (REST APIs)
-* [Scikit-Learn](https://scikit-learn.org/) (Model training and serialization)
-* [Pandas](https://pandas.pydata.org/) & [NumPy](https://numpy.org/) (Data structures & Math)
+    subgraph Backend Processing
+        D[🌐 Flask REST APIs<br/>/api/* Endpoints] --> E
+        E[⚙️ Game Engine<br/>State & Routing] --> F[🧠 ID3 Decision Tree]
+    end
+
+    subgraph Data & Analytics
+        F --> G[📊 Feature Columns]
+        F --> H[🗃️ DataSet<br/> mindreader_data.csv]
+        E --> I[🏆 Scoreboard Tracker]
+    end
+
+    style E fill:#FF6F00,color:#fff
+    style F fill:#00C853,color:#fff
+```
 
 ---
 
 ## 🚀 Installation & Running Locally
 
-The project is structured neatly into decoupled `backend/` and `frontend/` workspaces so you can run the UI and the server independently.
+The project is structured elegantly into fully-decoupled `frontend/` and `backend/` architectures.
+
+### Prerequisites
+- Python 3.9+
+- Node.js & npm
 
 ### 1. Start the Machine Learning API (Backend)
-Open a terminal in the repository root and navigate to the backend folder:
+Open a terminal in the repository root and navigate:
 ```bash
 cd backend
 pip install -r requirements.txt
 python app.py
 ```
-*The Flask server will start successfully on `http://127.0.0.1:5000` loading all pre-trained models from the `backend/models` directory into memory.*
+*The Flask server will boot on `http://127.0.0.1:5000`, loading pre-trained Scikit-Learn logic.*
 
 ### 2. Start the Game Engine UI (Frontend)
-Open a **new** terminal in the repository root and navigate to the frontend folder:
+Open a **new** terminal in the repository root:
 ```bash
 cd frontend
 npm install
 npm run dev
 ```
-*The Svelte client will start up instantly. `ctrl+click` the local network output (usually `http://localhost:5173` or `5174`) to play the game in your browser!*
+*Navigate to your local Vite host (e.g. `http://localhost:5173`) to play immediately!*
 
 ---
 
-## 📈 Models & Accuracy
+## 📂 Project Structure
 
-The underlying datasets contain 189 unique items across diverse categories, scored against 40 binary features (e.g. `is_animal`, `has_wings`, `is_colorful`).
+```
+Mind-Reader/
+├── frontend/                     # 🌐 Svelte 4 Application
+│   ├── src/
+│   │   ├── pages/
+│   │   │   ├── Home.svelte       # Mode selections & Matrix Canvas
+│   │   │   ├── AIGuesses.svelte  # Model classification interface
+│   │   │   ├── UserGuesses.svelte# Custom chat client wrapper
+│   │   │   └── Stats.svelte      # Data-viz dashboards
+│   │   ├── lib/api.js            # Axios/Fetch backend wrapper
+│   │   ├── app.css               # Global glassmorphism styles
+│   │   └── App.svelte            # Routing
+│   ├── package.json
+│   └── vite.config.js            # Proxy configuration pointing to :5000
+│
+├── backend/                      # ⚙️ Flask & ML Engine
+│   ├── app.py                    # REST API declarations
+│   ├── game_engine.py            # Core logic, entropy checks, and state
+│   └── data/
+│       └── mindreader_data.csv   # The 189 row target dataset
+│
+├── models/                       # 🧠 Trained Data
+│   ├── modelcolab/
+│   │   ├── dt_model.pkl          # Serialized Decision Tree
+│   │   └── label_encoders.pkl    # String <-> Binary conversions
+│   └── game.ipynb                # Jupyter Notebook detailing model generation
+│
+└── README.md                     # This file!
+```
 
-The game relies strictly on the **Decision Tree (ID3)** model generated by the `game.ipynb` Jupyter Notebook. This model provides high interpretability by mapping directly to YES/NO queries.
+---
 
-*(Full technical documentation and model generation steps are located inside `backend/models/game.ipynb`!)*
+## ⚙️ How It Works
+
+### Training Pipeline Summary
+
+```
+Raw Dataset (189 entities, 40 features)
+        ⬇️
+Label Encoding (Categorical to integers)
+        ⬇️
+Model Generation (DecisionTreeClassifier, Entropy Criterion)
+        ⬇️
+JSON Extraction (Candidate lists and optimal features mapped)
+        ⬇️
+Export to JobLib/Pickle (.pkl)
+```
+
+The game relies strictly on an **ID3 Decision Tree** built on *Information Gain*. 
+*(Full mathematical documentation and code is inside `models/game.ipynb`!)*
+
+---
+
+<div align="center">
+
+**⭐ Star this repo if you survived the AI Mind Reader!**
+
+</div>
