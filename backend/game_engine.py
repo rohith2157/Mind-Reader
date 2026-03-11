@@ -296,8 +296,8 @@ class MindReaderGame:
                 model_used = "Candidate Mode"
         else:
             preds = self._get_predictions()
-            guess = preds.get('Random Forest', preds.get('Decision Tree', 'Unknown'))
-            model_used = "Model Ensemble"
+            guess = preds.get('Decision Tree', 'Unknown')
+            model_used = "Decision Tree (ID3)"
 
         return {
             'guess': guess,
