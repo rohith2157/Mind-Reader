@@ -82,20 +82,23 @@ class MindReaderGame:
     def _load_resources(self):
         """Load model, encoders, and dataset."""
         # Load dataset
-        self.df = pd.read_csv('mindreader_data.csv')
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        data_path = os.path.join(base_dir, 'data', 'mindreader_data.csv')
+        self.df = pd.read_csv(data_path)
 
         # Load from modelcolab (trained via Colab notebook)
-        model_dir = 'models/modelcolab'
+        base_dir = os.path.dirname(os.path.abspath(__file__))
+        model_dir = os.path.join(base_dir, '..', 'models', 'modelcolab')
 
         # Load feature columns
-        self.feature_cols = joblib.load(f'{model_dir}/feature_cols.pkl')
+        self.feature_cols = joblib.load(os.path.join(model_dir, 'feature_cols.pkl'))
 
         # Load label encoders
-        self.le_name = joblib.load(f'{model_dir}/label_encoder_name.pkl')
-        self.le_category = joblib.load(f'{model_dir}/label_encoder_category.pkl')
+        self.le_name = joblib.load(os.path.join(model_dir, 'label_encoder_name.pkl'))
+        self.le_category = joblib.load(os.path.join(model_dir, 'label_encoder_category.pkl'))
 
         # Decision Tree — Only model (trained in Colab notebook)
-        self.models['dt'] = joblib.load(f'{model_dir}/dt_model.pkl')
+        self.models['dt'] = joblib.load(os.path.join(model_dir, 'dt_model.pkl'))
 
         # Get unique entities for candidate filtering
         self.unique_entities = self.df.drop_duplicates(subset='name').copy()
