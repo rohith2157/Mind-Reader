@@ -25,7 +25,7 @@ export const aiGuessFinalize = (correct)            => post('/api/ai-guess/final
 export const userGuessStart  = ()            => post('/api/user-guess/start');
 export const userGuessAsk    = (question)    => post('/api/user-guess/ask', { question });
 export const userGuessHint   = ()            => post('/api/user-guess/hint');
-export const userGuessGuess  = (entity)      => post('/api/user-guess/guess', { entity });
+export const userGuessGuess  = (guess)      => post('/api/user-guess/guess', { guess });
 export const userGuessGiveUp = ()            => post('/api/user-guess/give-up');
 
 // ── Meta ──────────────────────────────────────────────────────
