@@ -1,4 +1,5 @@
 <script>
+  import { fade } from 'svelte/transition';
   import Home        from './pages/Home.svelte';
   import AIGuesses   from './pages/AIGuesses.svelte';
   import UserGuesses from './pages/UserGuesses.svelte';
@@ -9,11 +10,11 @@
 </script>
 
 {#if page === 'home'}
-  <Home {navigate} />
+  <div in:fade={{ duration: 300 }}><Home {navigate} /></div>
 {:else if page === 'ai'}
-  <AIGuesses {navigate} />
+  <div in:fade={{ duration: 300 }}><AIGuesses {navigate} /></div>
 {:else if page === 'user'}
-  <UserGuesses {navigate} />
+  <div in:fade={{ duration: 300 }}><UserGuesses {navigate} /></div>
 {:else if page === 'stats'}
-  <Stats {navigate} />
+  <div in:fade={{ duration: 300 }}><Stats {navigate} /></div>
 {/if}
