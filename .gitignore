@@ -1,0 +1,38 @@
+# Node / Frontend
+node_modules/
+dist/
+.npm/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.venv/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Project specifics
+game_history.json
+# Note: models/modelcolab/*.pkl are included by default so the game works out of the box, but if they are too large, they can be ignored here.
+
+# OS
+.DS_Store
+Thumbs.db

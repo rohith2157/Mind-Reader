@@ -1,0 +1,123 @@
+
+============================================================
+    AI MIND READER — PROJECT REPORT
+============================================================
+
+Generated automatically by evaluation.py
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📁 DATASET DESCRIPTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Total Rows:         1000
+  Total Columns:      42
+  Feature Columns:    40
+  Unique Entities:    189
+  
+  Category Distribution:
+    - animal: 429 rows
+    - object: 259 rows
+    - fictional: 113 rows
+    - plant: 101 rows
+    - human: 98 rows
+
+  Features Used:
+     1. is_alive
+     2. is_animal
+     3. is_human
+     4. is_plant
+     5. is_object
+     6. has_wings
+     7. can_fly
+     8. lives_in_water
+     9. lives_in_jungle
+    10. lives_in_desert
+    11. lives_in_home
+    12. is_big
+    13. is_small
+    14. has_4_legs
+    15. has_2_legs
+    16. has_no_legs
+    17. has_fur
+    18. has_scales
+    19. has_feathers
+    20. has_shell
+    21. is_carnivore
+    22. is_herbivore
+    23. is_omnivore
+    24. is_dangerous
+    25. is_domestic
+    26. is_nocturnal
+    27. found_in_africa
+    28. found_in_asia
+    29. found_in_ocean
+    30. is_fast
+    31. is_colorful
+    32. makes_sound
+    33. can_be_pet
+    34. is_extinct
+    35. is_fictional
+    36. is_used_daily
+    37. is_electronic
+    38. is_food_related
+    39. is_vehicle
+    40. is_used_in_sports
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🧠 MODELS USED AND ACCURACIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Logistic Regression (category)      100.00%
+  Decision Tree (ID3)                  96.00%
+  Naive Bayes                          96.00%
+  Gradient Boost                       96.00%
+  Random Forest                        96.00%
+  KNN                                  72.00%
+  AdaBoost                              3.00%
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🏆 BEST PERFORMING MODEL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Model:    Logistic Regression (category)
+  Accuracy: 100.0%
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎮 GAME STATISTICS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Total Games Played: 6
+  AI Wins:            4
+  User Wins:          2
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🎓 LAB EXPERIMENTS COVERED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  Exp-1:  Python, NumPy, Pandas — Data generation & loading
+  Exp-2:  Feature Engineering — Preprocessing & importance
+  Exp-3:  Linear/Multiple Regression — Confidence scoring
+  Exp-4:  Decision Tree ID3 — Main brain of the game
+  Exp-5:  Logistic Regression — Question selection probability
+  Exp-6:  KNN — Backup guesser
+  Exp-7:  K-Means — Object clustering
+  Exp-8:  Agglomerative Clustering — Category grouping
+  Exp-9:  Naive Bayes — Confidence percentage
+  Exp-10: AdaBoost + Gradient Boost — Strong learners
+  Exp-11: Random Forest — Final predictor
+  Exp-12: Full project integration — Complete system
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📈 EVALUATION PLOTS GENERATED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  1. plots/accuracy_comparison.png
+  2. plots/confusion_matrix.png
+  3. plots/feature_importance.png
+  4. plots/learning_curve.png
+  5. plots/category_distribution.png
+
+============================================================
+  AI Mind Reader — Lab Project
+  All 12 Experiments Covered ✅
+============================================================

@@ -1,0 +1,27 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #e0e0e0;
+  background-color: #0a0a0f;
+  -webkit-font-smoothing: antialiased;
+}
+
+body { min-height: 100vh; overflow-x: hidden; }
+
+#app { min-height: 100vh; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: rgba(255,255,255,.05); }
+::-webkit-scrollbar-thumb { background: rgba(0,255,136,.3); border-radius: 3px; }
+
+/* Selection */
+::selection { background: rgba(0,255,136,.25); }
+
+a { color: #00ff88; text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+strong { color: inherit; font-weight: 700; }

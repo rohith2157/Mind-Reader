@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🧬 AI Mind Reader</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <!-- Matrix Rain Background -->
+    <canvas id="matrix-canvas"></canvas>
+
+    <div class="container">
+        <!-- Animated Brain Header -->
+        <div class="brain-container">
+            <div class="brain-ring ring-1"></div>
+            <div class="brain-ring ring-2"></div>
+            <div class="brain-ring ring-3"></div>
+            <div class="brain-icon">🧠</div>
+        </div>
+
+        <h1 class="title glitch" data-text="AI MIND READER">🧬 AI MIND READER</h1>
+        <p class="subtitle">Can AI read your mind? Let's find out...</p>
+
+        <!-- Game Mode Buttons -->
+        <div class="mode-buttons">
+            <a href="/game/ai_guesses" class="btn btn-primary btn-large pulse">
+                <span class="btn-icon">🤖</span>
+                <span class="btn-text">AI GUESSES</span>
+                <span class="btn-desc">Think of something — AI will guess it</span>
+            </a>
+            <a href="/game/user_guesses" class="btn btn-secondary btn-large pulse">
+                <span class="btn-icon">🎭</span>
+                <span class="btn-text">YOU GUESS</span>
+                <span class="btn-desc">AI picks something — You guess what it is</span>
+            </a>
+        </div>
+
+        <!-- Scoreboard -->
+        <div class="scoreboard">
+            <h2 class="glow-text">⚡ SCOREBOARD ⚡</h2>
+            <div class="score-row">
+                <div class="score-card ai-score">
+                    <div class="score-label">🤖 AI WINS</div>
+                    <div class="score-value">{{ score.ai_wins }}</div>
+                </div>
+                <div class="score-vs">VS</div>
+                <div class="score-card user-score">
+                    <div class="score-label">👤 YOUR WINS</div>
+                    <div class="score-value">{{ score.user_wins }}</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Link -->
+        <div class="nav-links">
+            <a href="/stats" class="btn btn-outline">📊 View Stats Dashboard</a>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <p>AI Mind Reader — Lab Project | Covers Experiments 1-12</p>
+            <p class="tech-stack">Decision Tree • KNN • Naive Bayes • AdaBoost • Gradient Boost • Random Forest</p>
+        </div>
+    </div>
+
+    <script>
+        // Matrix rain effect
+        const canvas = document.getElementById('matrix-canvas');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const chars = '01アイウエオカキクケコサシスセソ';
+        const fontSize = 14;
+        const columns = Math.floor(canvas.width / fontSize);
+        const drops = Array(columns).fill(1);
+
+        function drawMatrix() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = '#0f0';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < drops.length; i++) {
+                const text = chars[Math.floor(Math.random() * chars.length)];
+                ctx.fillStyle = `rgba(0, ${150 + Math.random() * 105}, ${Math.random() * 80}, ${0.3 + Math.random() * 0.5})`;
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+        setInterval(drawMatrix, 50);
+
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>
