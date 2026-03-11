@@ -16,8 +16,9 @@ A full-stack AI-powered game where an Artificial Intelligence tries to read your
 ## How to Run Locally
 
 ### 1. Python Backend
-Navigate to the root project folder:
+Navigate to the backend folder:
 ```bash
+cd backend
 pip install -r requirements.txt  # If requirements exist, otherwise install pandas numpy scikit-learn flask flask-cors
 python app.py
 ```
